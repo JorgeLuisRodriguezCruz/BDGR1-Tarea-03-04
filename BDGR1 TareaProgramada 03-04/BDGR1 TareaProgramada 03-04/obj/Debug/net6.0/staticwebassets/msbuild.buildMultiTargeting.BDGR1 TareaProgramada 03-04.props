@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BDGR1 TareaProgramada 03-04.props" />
+</Project>
