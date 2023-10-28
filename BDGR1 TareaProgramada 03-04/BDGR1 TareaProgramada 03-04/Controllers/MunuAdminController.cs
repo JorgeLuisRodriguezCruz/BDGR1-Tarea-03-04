@@ -25,5 +25,30 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
         {
             return View();
         }
+
+        public IActionResult SecEditar()
+        {
+            ViewBag.Subtitulo = "Editar empleado";
+            return View(nameof(SeleccionarEmpleado));
+        }
+
+        public IActionResult SecEliminar()
+        {
+            ViewBag.Subtitulo = "Eliminar empleado";
+            return View(nameof(SeleccionarEmpleado));
+        }
+
+        public IActionResult SecImpersonar()
+        {
+            ViewBag.Subtitulo = "Impersonar empleado";
+            return View(nameof(SeleccionarEmpleado));
+        }
+
+        public IActionResult CerrarS()
+        {
+            return RedirectToAction("InicioSesion", "Acceso");
+        }
+
+
     }
 }
