@@ -10,5 +10,6 @@ namespace BDGR1_TareaProgramada_03_04.Data
         }
 
         public DbSet<EntidadUsuario> Usuarios { get; set; }
+        public DbSet<EntidadEmpleado> Empleados { get; set; }
     }
 }

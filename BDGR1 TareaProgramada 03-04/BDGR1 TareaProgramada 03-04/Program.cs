@@ -27,6 +27,11 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Acceso}/{action=InicioSesion}/{id?}"); 
+    
+    //pattern: "{controller=MunuAdmin}/{action=SeleccionarEmpleado}/{id?}");
+    
+    //pattern: "{controller=MunuAdmin}/{action=ListaEmpleado}/{id?}");
+    //pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

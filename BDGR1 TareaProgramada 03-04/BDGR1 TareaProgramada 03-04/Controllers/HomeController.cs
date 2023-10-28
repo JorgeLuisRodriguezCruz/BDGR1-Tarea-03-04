@@ -6,14 +6,11 @@ using System.Diagnostics;
 namespace BDGR1_TareaProgramada_03_04.Controllers
 {
     public class HomeController : Controller
-    {
-        //private readonly ILogger<HomeController> _logger;
-
+    { 
         private readonly AppDBContext _context;
 
         public HomeController(AppDBContext context)
         {
-            //_logger = logger;
             _context = context;
         }
 

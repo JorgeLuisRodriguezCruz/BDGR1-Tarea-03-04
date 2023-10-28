@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Seleccion";
+}
+
+
+<body>
+    <div>
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+
+                        <h3 class="text-center"> @ViewBag.Subtitulo </h3>
+
+                        <div class="form-group">
+                            
+
+
+                            <label for="Codigo" class="form-label">Insertar codigo:</label><br />
+                            <input type="text" id="LbCodigo" class="form-control">
+                        </div> <br />
+
+
+                        <div class="form-group">
+                            <div style="float:left"> <input id="BtAceptar" type="submit" class="btn btn-primary" value="Aceptar"> </div>
+                            <!-- a asp-action="Index"-->
+                            <div style="float:left; margin-left:4%"> 
+                                <a asp-action="ListaEmpleado">  <input type="submit" value="Cancelar" class="btn btn-primary" /> </a>
+                            </div>
+
+                        </div><br />
+                        <div style="margin-top:5%"> <a style="color:orangered">@ViewBag.Mensaje</a> </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

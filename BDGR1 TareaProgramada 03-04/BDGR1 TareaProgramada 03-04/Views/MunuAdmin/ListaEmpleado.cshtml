@@ -1,0 +1,116 @@
+﻿<!-- model IEnumerable<Tarea__2.Models.ArticuloVista>  -->
+@model IEnumerable<BDGR1_TareaProgramada_03_04.Models.EntidadEmpleado>
+
+@{
+    ViewData["Title"] = "Empleados";
+    <!--  List<SelectListItem> opciones = (List <SelectListItem>) ViewBag.opciones;  -->
+}
+
+<div>
+    
+    <h1 style="margin-left: 30px; margin-top: 20px; font-size: 190%;">Empleados</h1>
+
+</div> 
+
+<!--margin-left: 20px;-->
+
+<div style="width: 50%; margin-top: 20px; float: left; max-width: 40%;">
+
+    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Nombre:</label>
+    <input class="form-control" style="width: 60%; margin-left: 20px; max-width: 80%;">
+
+    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Cantidad:</label>
+    <input class="form-control" style="width: 60%; margin-left: 20px; max-width: 80%;">
+    
+    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Departamentos:</label>
+    <select class="form-select" style="width: 80%; max-width: 80%; margin-left: 20px;">
+        
+    </select>
+    
+    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Puestos:</label> 
+    <select class="form-select" style="width: 80%; max-width: 90%; margin-left: 20px; margin-bottom: 20px;">
+        
+    </select>
+
+</div>
+<div style="float: left; margin-top: 20px; margin-right: 20px; width: 46%; max-width: 46%; margin-bottom: 20px; height: 380px; max-height: 380px;">
+    
+    <input style="margin-top: 20px; width: 90px;" class="btn btn-primary" value="Insertar">
+    
+    <input style="margin-top: 20px; width: 90px; margin-left: 2%;" class="btn btn-primary" value="Editar">
+    
+    <input style="margin-top: 20px; width: 90px; margin-left: 2%;" class="btn btn-primary" value="Eliminar">
+    
+    <input style="margin-top: 20px; width: 120px; margin-left: 2%; max-width: 110px;" class="btn btn-primary" value="Impersonar">
+    
+    <div style="margin-top: 20px;">
+        
+        <label class="form-label" style="width: 100%; max-width: 100%; margin-left: 2%;">Filtros:</label>
+
+        <input style="margin-top: 2%; width: 120px; max-width: 100px;" class="btn btn-primary" value="Nombre">
+        
+        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 2%;" class="btn btn-primary" value="Cantidad">
+        
+        <input style="margin-top: 2%; width: 120px; max-width: 140px; margin-left: 2%;" class="btn btn-primary" value="Tipo Departamento">
+        
+        <input style="margin-top: 2%; width: 120px; max-width: 140px; margin-left: 2%;" class="btn btn-primary" value="Tipo Puesto">
+
+    </div>
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ValorDocIdentidad)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoDocIdentidad)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.IdDepartamento)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.IdPuesto)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorDocIdentidad)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTipoDocIdentidad)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDepartamento)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPuesto)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

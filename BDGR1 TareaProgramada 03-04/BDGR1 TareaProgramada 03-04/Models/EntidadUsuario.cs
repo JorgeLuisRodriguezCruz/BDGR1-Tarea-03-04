@@ -11,7 +11,7 @@ namespace BDGR1_TareaProgramada_03_04.Models
 
         public string Nombre { get; set; }
 
-        public string Contraseña { get; set; }
+        public string Contrasena { get; set; }
 
 
     }
