@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Data;
+using System.Xml.Linq;
 
 namespace BDGR1_TareaProgramada_03_04.Controllers
 {
@@ -26,9 +28,26 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
         public ActionResult InicioSesion(string Nombre, string Contrasena)
         {  
             IEnumerable<EntidadUsuario> usuario = null;
-            int tipo = -1;
+            string dirUrl = "C:\\Users\\rodri\\Desktop\\GIT\\BDGR1-Tarea-03-04\\BDGR1 TareaProgramada 03-04\\BDGR1 TareaProgramada 03-04\\DataXML\\Catalogos.xml";
+            string contenidoCatalogos = "";
 
-            try {
+            try
+            {
+                contenidoCatalogos = System.IO.File.ReadAllText(dirUrl);
+                //Console.WriteLine(contenidoCatalogos);
+                //var result = _context.Usuarios.FromSqlInterpolated($"EXEC CargarCatalogos {contenidoCatalogos}");
+                //<?xml version="1.0" encoding="utf-8" ?>
+
+                XDocument.Parse (contenidoCatalogos);
+
+                SqlConnection conn = (SqlConnection)_context.Database.GetDbConnection();
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandText = "CargarCatalogos";
+                cmd.Parameters.Add(new SqlParameter("@xmlData", SqlDbType.Xml) { Value = contenidoCatalogos });
+                cmd.ExecuteNonQuery();
+                conn.Close();
 
                 usuario = _context.Usuarios.FromSqlInterpolated($"EXEC BuscarUsuario {Nombre}, {Contrasena}");
 
@@ -89,9 +108,9 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
             ViewBag.Mensaje = "Error: Combinación de usuario y password no existe en la BD.";
             */
 
-            if (usuario.Count() > 0)
+            if (usuario != null && usuario.Count() > 0)
             {
-                tipo = usuario.First().Tipo;
+                int tipo = usuario.First().Tipo;
                 switch(tipo)
                 {
                     case 1: //Menu Admin
@@ -103,8 +122,7 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
                 
             }
 
-
-            ViewBag.Mensaje = "Error: Usuario no encontrado.";
+            ViewBag.Mensaje = "Error: El suario no ha sido encontrado.";
             return View();
         }
 
