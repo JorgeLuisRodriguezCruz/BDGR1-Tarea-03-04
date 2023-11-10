@@ -21,6 +21,21 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
             return View(empleados);
         }
 
+        public IActionResult Insertar()
+        {
+            return View();
+        }
+
+        public IActionResult Editar()
+        {
+            return View();
+        }
+
+        public IActionResult Eliminar() 
+        { 
+            return View();
+        }
+
         public IActionResult SeleccionarEmpleado()
         {
             return View();

@@ -1,0 +1,55 @@
+﻿@model BDGR1_TareaProgramada_03_04.Models.EntidadEmpleado
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<br />
+<h4>Eliminar</h4>
+<br />
+
+<h5>¿Seguro que desea eliminar el siguiente empleado?</h5>
+<div>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+		</dd> 
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.ValorDocIdentidad)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.ValorDocIdentidad)
+		</dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdTipoDocIdentidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdTipoDocIdentidad)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdDepartamento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdDepartamento)
+        </dd> 
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdPuesto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdPuesto)
+
+    </dl>
+
+    <form asp-action="Eliminar">
+        <input type="hidden" asp-for="ValorDocIdentidad" />
+        <input type="submit" value="Confirmar" class="btn btn-primary" />
+    </form><br />
+    <a asp-action="ListaEmpleado">  <input type="submit" value="Cancelar" class="btn btn-primary"> </a>
+</div>

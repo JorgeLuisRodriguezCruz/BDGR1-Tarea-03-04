@@ -11,57 +11,65 @@
     <h1 style="margin-left: 30px; margin-top: 20px; font-size: 190%;">Empleados</h1>
 
 </div> 
+ 
+<div style="width: 100%; margin-top: 20px; max-width: 100%;">
 
-<!--margin-left: 20px;-->
+    <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Nombre:</label>
+    <input class="form-control" style="width: 60%; margin-left: 5%; max-width: 80%;">
 
-<div style="width: 50%; margin-top: 20px; float: left; max-width: 40%;">
+    <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Cantidad:</label>
+    <input class="form-control" style="width: 60%; margin-left: 5%; max-width: 80%;">
 
-    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Nombre:</label>
-    <input class="form-control" style="width: 60%; margin-left: 20px; max-width: 80%;">
-
-    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Cantidad:</label>
-    <input class="form-control" style="width: 60%; margin-left: 20px; max-width: 80%;">
+    <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Identificacion:</label>
+    <select class="form-select" style="width: 60%; max-width: 80%; margin-left: 5%;">
+    </select>
     
-    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Departamentos:</label>
-    <select class="form-select" style="width: 80%; max-width: 80%; margin-left: 20px;">
+    <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Departamentos:</label>
+    <select class="form-select" style="width: 60%; max-width: 80%; margin-left: 5%;">
         
     </select>
     
-    <label class="form-label" style="margin-left: 20px; margin-top: 20px;">Puestos:</label> 
-    <select class="form-select" style="width: 80%; max-width: 90%; margin-left: 20px; margin-bottom: 20px;">
+    <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Puestos:</label> 
+    <select class="form-select" style="width: 60%; max-width: 90%; margin-left: 5%; margin-bottom: 20px;">
         
     </select>
 
+</div> 
+<div style="margin-top: 20px; width: 100%; max-width: 100%; height: 240px; max-height: 260px;">
+    
+    <div style="margin-top: 20px; ">
+        
+        <label class="form-label" style="width: 100%; max-width: 100%; margin-left: 5%;">Filtros:</label>
+
+        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 5%;" class="btn btn-primary" value="Nombre">
+        
+        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 5%;" class="btn btn-primary" value="Cantidad">
+
+        <input style="margin-top: 2%; width: 140px; max-width: 160px; margin-left: 5%;" class="btn btn-primary" value="Identificacion">
+        
+        <input style="margin-top: 2%; width: 140px; max-width: 160px; margin-left: 5%;" class="btn btn-primary" value="Departamento">
+        
+        <input style="margin-top: 2%; width: 120px; max-width: 140px; margin-left: 5%;" class="btn btn-primary" value="Puesto">
+
+        <hr />
+
+	</div>
+
+    <label class="form-label" style="margin-top: 20px; width: 100%; max-width: 100%; margin-left: 5%;">Acciones:</label>
+	
+    <a asp-action="Insertar"> <input style="width: 90px; margin-left: 5%;" class="btn btn-primary" value="Insertar"> </a>
+
+	<a asp-action="SecEditar"> <input style="  width: 120px; margin-left: 5%;" class="btn btn-primary" value="Editar  "> </a>
+
+	<a asp-action="SecEliminar"><input style="  width: 120px; margin-left: 5%;" class="btn btn-primary" value="Eliminar  "> </a>
+
+	<a asp-action="SecImpersonar"><input style="  width: 120px; margin-left: 5%; max-width: 110px;" class="btn btn-primary" value="Impersonar"> </a>
+
+	<a asp-action="CerrarS"><input style="  width: 100px; margin-left: 5%;" class="btn btn-primary" value="Salir"> </a>
+
 </div>
-<div style="float: left; margin-top: 20px; margin-right: 20px; width: 46%; max-width: 46%; margin-bottom: 20px; height: 380px; max-height: 380px;">
-    
-    <input style="margin-top: 20px; width: 90px;" class="btn btn-primary" value="Insertar">
-    
-    <a asp-action="SecEditar"> <input style="margin-top: 20px; width: 120px; margin-left: 2%;" class="btn btn-primary" value="Editar  "> </a>
-    <!--type="submit"-->
-    <a asp-action="SecEliminar"><input style="margin-top: 20px; width: 120px; margin-left: 2%;" class="btn btn-primary" value="Eliminar  "> </a>
-    
-    <a asp-action="SecImpersonar"><input style="margin-top: 20px; width: 120px; margin-left: 2%; max-width: 110px;" class="btn btn-primary" value="Impersonar"> </a>
 
-    <a asp-action="CerrarS"><input style="margin-top: 20px; width: 100px; " class="btn btn-primary" value="Salir"> </a>
-    
-    <div style="margin-top: 20px;">
-        
-        <label class="form-label" style="width: 100%; max-width: 100%; margin-left: 2%;">Filtros:</label>
-
-        <input style="margin-top: 2%; width: 120px; max-width: 100px;" class="btn btn-primary" value="Nombre">
-        
-        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 2%;" class="btn btn-primary" value="Cantidad">
-        
-        <input style="margin-top: 2%; width: 120px; max-width: 140px; margin-left: 2%;" class="btn btn-primary" value="Tipo Departamento">
-        
-        <input style="margin-top: 2%; width: 120px; max-width: 140px; margin-left: 2%;" class="btn btn-primary" value="Tipo Puesto">
-
-    </div>
-
-</div>
-
-<table class="table">
+<table class="table" style="margin-top: 20px;">
     <thead>
         <tr>
             <th>
