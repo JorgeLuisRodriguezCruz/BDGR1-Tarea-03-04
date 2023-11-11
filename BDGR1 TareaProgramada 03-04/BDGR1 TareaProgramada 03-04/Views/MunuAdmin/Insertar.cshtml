@@ -1,8 +1,10 @@
 ﻿@model BDGR1_TareaProgramada_03_04.Models.EntidadEmpleado
 
 @{
-    <!--ViewData["Title"] = "Insertar";-->
-    List<SelectListItem> opciones = (List<SelectListItem>)ViewBag.opciones;
+    ViewData["Title"] = "Insertar";
+    List<SelectListItem> OpcionesTipoDocID = (List<SelectListItem>)ViewBag.OpcionesTipoDocID;
+    List<SelectListItem> OpcionesTipoDepart = (List<SelectListItem>)ViewBag.OpcionesTipoDepart;
+    List<SelectListItem> OpcionesTipoPuesto = (List<SelectListItem>)ViewBag.OpcionesTipoPuesto;
 }
 
 <br />
@@ -11,46 +13,50 @@
 
 <div class="row">
     <div class="col-md-4">
-        <!--form asp-action="Create"-->
+        <form asp-action="Insertar">
         <form>
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-			<div class="form-group">
+            <div class="form-group" style="margin-top: 20px;">
 				<label asp-for="Nombre" class="control-label"></label>
 				<input asp-for="Nombre" class="form-control" />
 				<span asp-validation-for="Nombre" class="text-danger"></span>
 			</div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 20px;">
                 <label asp-for="ValorDocIdentidad" class="control-label"></label>
                 <input asp-for="ValorDocIdentidad" class="form-control" />
                 <span asp-validation-for="ValorDocIdentidad" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 20px;">
                 <label asp-for="IdTipoDocIdentidad" class="control-label">Tipo de identificacion:</label>
                 <select asp-for="IdTipoDocIdentidad" class="form-select" name="tipoDocId">
-
-                    <!-- foreach (var op in opcionesDocsId) { <option value="Html.DisplayName(op.Value)"> Html.DisplayName(op.Text)</option> } -->
-
+                    @foreach (var op in OpcionesTipoDocID)
+                    {
+                        <option value="@Html.DisplayName(op.Value)"> @Html.DisplayName(op.Text)</option>
+                    }
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 20px;">
                 <label asp-for="IdDepartamento" class="control-label">Departamentos:</label>
-                <select asp-for="IdDepartamento" class="form-select" name="departamento">
-                    
-                    <!-- foreach (var op in opcionesDepartamento) { <option value="Html.DisplayName(op.Value)"> Html.DisplayName(op.Text)</option> } -->
+                <select asp-for="IdDepartamento" class="form-select" name="departamento"> 
+                    @foreach (var op in OpcionesTipoDepart)
+                    {
+                        <option value="@Html.DisplayName(op.Value)"> @Html.DisplayName(op.Text)</option>
+                    }
 
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 20px;">
                 <label asp-for="IdPuesto" class="control-label">Puestos:</label>
                 <select asp-for="IdPuesto" class="form-select" name="puesto">
-
-                    <!-- foreach (var op in opcionesPuesto) { <option value=" # Html.DisplayName(op.Value)"> # Html.DisplayName(op.Text)</option> } -->
-
+                    @foreach (var op in OpcionesTipoPuesto)
+                    {
+                        <option value="@Html.DisplayName(op.Value)"> @Html.DisplayName(op.Text)</option>
+                    }
                 </select>
             </div>
 
@@ -65,8 +71,16 @@
                 <input type="submit" value="Confirmar" class="btn btn-primary" />
             </div>
 
-        </form> <br />
+        </form> 
+        </form>
+        <br />
 
         <a asp-action="ListaEmpleado">  <input type="submit" value="Cancelar" class="btn btn-primary"> </a>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+ }

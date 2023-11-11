@@ -13,26 +13,25 @@
 
                         <h3 class="text-center"> @ViewBag.Subtitulo </h3>
 
+                        <div class="form-group">  
+                            <label for="Codigo" class="form-label">Inserte el valor de la identificacion:</label><br />
+                            <input type="text" id="LbValorId" class="form-control">
+                        </div> <br /> 
+
                         <div class="form-group">
+                            <div style="float:left"> <input id="BttAceptar" type="submit" class="btn btn-primary" value="Aceptar"> </div>
                             
-
-
-                            <label for="Codigo" class="form-label">Insertar codigo:</label><br />
-                            <input type="text" id="LbCodigo" class="form-control">
-                        </div> <br />
-
-
-                        <div class="form-group">
-                            <div style="float:left"> <input id="BtAceptar" type="submit" class="btn btn-primary" value="Aceptar"> </div>
-                            <!-- a asp-action="Index"-->
                             <div style="float:left; margin-left:4%"> 
                                 <a asp-action="ListaEmpleado">  <input type="submit" value="Cancelar" class="btn btn-primary" /> </a>
                             </div>
 
                         </div><br />
                         <div style="margin-top:5%"> <a style="color:orangered">@ViewBag.Mensaje</a> </div>
-
-
+                         
+                        <form asp-action="SeleccionadoRedir" id="FormOculto" method="post" style="display: none;">
+                            <input type="hidden" id="valorIdentidad" name="valorIdentidad" value="">
+                            <input type="hidden" name="nuevaDir" value="@ViewBag.Subtitulo">
+                        </form>
 
                     </div>
                 </div>
@@ -40,3 +39,12 @@
         </div>
     </div>
 </body>
+
+<script>
+
+    document.getElementById('BttAceptar').addEventListener('click', function () {
+        var selectedValue = document.getElementById('LbValorId').value;
+        document.getElementById('valorIdentidad').value = selectedValue;
+        document.getElementById('FormOculto').submit();
+    });
+</script>

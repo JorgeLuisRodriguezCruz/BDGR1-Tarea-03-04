@@ -31,7 +31,7 @@ app.MapControllerRoute(
 
     //pattern: "{controller=Acceso}/{action=InicioSesion}/{id?}"); 
     
-    //pattern: "{controller=MunuAdmin}/{action=Eliminar}/{id?}"); 
+    //pattern: "{controller=MunuAdmin}/{action=Editar}/{id?}"); 
     pattern: "{controller=MunuAdmin}/{action=ListaEmpleado}/{id?}");
 
     //pattern: "{controller=Home}/{action=Index}/{id?}");
