@@ -1,5 +1,4 @@
-﻿<!-- model IEnumerable<Tarea__2.Models.ArticuloVista>  -->
-@model IEnumerable<BDGR1_TareaProgramada_03_04.Models.VistaEmpleado>
+﻿@model IEnumerable<BDGR1_TareaProgramada_03_04.Models.VistaEmpleado>
 
 @{
     ViewData["Title"] = "Empleados";
@@ -17,13 +16,13 @@
 <div style="width: 100%; margin-top: 20px; max-width: 100%;">
 
     <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Nombre:</label>
-    <input class="form-control" style="width: 60%; margin-left: 5%; max-width: 80%;">
+    <input class="form-control" style="width: 60%; margin-left: 5%; max-width: 80%;" id="LBNombre">
 
     <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Cantidad:</label>
-    <input class="form-control" style="width: 60%; margin-left: 5%; max-width: 80%;">
+    <input class="form-control" style="width: 60%; margin-left: 5%; max-width: 80%;" id="LBCantidad">
 
     <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Identificacion:</label>
-    <select class="form-select" style="width: 60%; max-width: 80%; margin-left: 5%;">
+    <select class="form-select" style="width: 60%; max-width: 80%; margin-left: 5%;" name="TipoDocId" id="TipoDocId">
         @foreach (var op in OpcionesTipoDocID)
         {
             <option value="@Html.DisplayName(op.Value)"> @Html.DisplayName(op.Text)</option>
@@ -31,7 +30,7 @@
     </select>
     
     <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Departamentos:</label>
-    <select class="form-select" style="width: 60%; max-width: 80%; margin-left: 5%;">
+    <select class="form-select" style="width: 60%; max-width: 80%; margin-left: 5%;" name="TipoDepartamento" id="TipoDepartamento">
         @foreach (var op in OpcionesTipoDepart)
         {
             <option value="@Html.DisplayName(op.Value)"> @Html.DisplayName(op.Text)</option>
@@ -39,7 +38,7 @@
     </select>
     
     <label class="form-label" style="margin-left: 5%; margin-top: 20px;">Puestos:</label> 
-    <select class="form-select" style="width: 60%; max-width: 90%; margin-left: 5%; margin-bottom: 20px;">
+    <select class="form-select" style="width: 60%; max-width: 90%; margin-left: 5%; margin-bottom: 20px;" name="TipoPuesto" id="TipoPuesto">
         @foreach (var op in OpcionesTipoPuesto)
         {
             <option value="@Html.DisplayName(op.Value)"> @Html.DisplayName(op.Text)</option>
@@ -47,21 +46,22 @@
     </select>
 
 </div> 
+
 <div style="margin-top: 20px; width: 100%; max-width: 100%; height: 240px; max-height: 260px;">
     
     <div style="margin-top: 20px; ">
         
         <label class="form-label" style="width: 100%; max-width: 100%; margin-left: 5%;">Filtros:</label>
 
-        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 5%;" class="btn btn-primary" value="Nombre">
+        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 5%;" class="btn btn-primary" value="Nombre" id="FiltroNombre" type="submit">
         
-        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 5%;" class="btn btn-primary" value="Cantidad">
+        <input style="margin-top: 2%; width: 120px; max-width: 100px; margin-left: 5%;" class="btn btn-primary" value="Cantidad" id="FiltroCantidad" type="submit">
 
-        <input style="margin-top: 2%; width: 140px; max-width: 160px; margin-left: 5%;" class="btn btn-primary" value="Identificacion">
+        <input style="margin-top: 2%; width: 140px; max-width: 160px; margin-left: 5%;" class="btn btn-primary" value="Identificacion" id="FiltroTipoDocId" type="submit">
         
-        <input style="margin-top: 2%; width: 140px; max-width: 160px; margin-left: 5%;" class="btn btn-primary" value="Departamento">
+        <input style="margin-top: 2%; width: 140px; max-width: 160px; margin-left: 5%;" class="btn btn-primary" value="Departamento" id="FiltroTipoDepartamento" type="submit">
         
-        <input style="margin-top: 2%; width: 120px; max-width: 140px; margin-left: 5%;" class="btn btn-primary" value="Puesto">
+        <input style="margin-top: 2%; width: 120px; max-width: 140px; margin-left: 5%;" class="btn btn-primary" value="Puesto" id="FiltroTipoPuesto" type="submit">
 
         <hr />
 
@@ -81,7 +81,7 @@
 
 </div>
 
-<table class="table" style="margin-top: 20px;">
+<table class="table" style="margin-top: 20px;" id="TablaEmpleados">
     <thead>
         <tr>
             <th>
@@ -89,19 +89,19 @@
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.ValorDocIdentidad)
+                Numero de identificacion
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.IdTipoDocIdentidad)
+                Tipo de documento
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.IdDepartamento)
+                Departamento
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.IdPuesto)
+                Puesto
             </th>
 
         </tr>
@@ -136,3 +136,58 @@
     </tbody>
 
 </table>
+
+<form asp-action="ListaEmpleado" id="FormFiltro_LBNombre" method="post" style="display: none;">
+    <input type="hidden" id="LBNombre_oculto" name="LBNombre_">
+</form>
+
+<form asp-action="ListaEmpleado" id="FormFiltro_LBCantidad" method="post" style="display: none;">
+    <input type="hidden" id="LBCantidad_oculto" name="LBCantidad_">
+</form>
+
+<form asp-action="ListaEmpleado" id="FormFiltro_TipoDoc" method="post" style="display: none;">
+    <input type="hidden" id="TipoDocId_oculto" name="TipoDocId_">
+</form>
+
+<form asp-action="ListaEmpleado" id="FormFiltro_TipoDepartamento" method="post" style="display: none;">
+    <input type="hidden" id="TipoDepartamento_oculto" name="TipoDepartamento_">
+</form>
+
+<form asp-action="ListaEmpleado" id="FormFiltro_TipoPuesto" method="post" style="display: none;">
+    <input type="hidden" id="TipoPuesto_oculto" name="TipoPuesto_">
+</form>
+
+<script>
+
+    document.getElementById('FiltroNombre').addEventListener('click', function () {
+        var selectedValue = document.getElementById('LBNombre').value;
+        document.getElementById('LBNombre_oculto').value = selectedValue;
+        document.getElementById('FormFiltro_LBNombre').submit();
+    });
+
+    document.getElementById('FiltroCantidad').addEventListener('click', function () {
+        var selectedValue = document.getElementById('LBCantidad').value;
+        document.getElementById('LBCantidad_oculto').value = selectedValue;
+        document.getElementById('FormFiltro_LBCantidad').submit();
+    });
+    
+    document.getElementById('FiltroTipoDocId').addEventListener('click', function () {
+        var selectedValue = document.getElementById('TipoDocId').value;
+        document.getElementById('TipoDocId_oculto').value = selectedValue;
+        document.getElementById('FormFiltro_TipoDoc').submit();
+    });
+
+    document.getElementById('FiltroTipoDepartamento').addEventListener('click', function () {
+        var selectedValue = document.getElementById('TipoDepartamento').value;
+        document.getElementById('TipoDepartamento_oculto').value = selectedValue;
+        document.getElementById('FormFiltro_TipoDepartamento').submit();
+    });
+
+    document.getElementById('FiltroTipoPuesto').addEventListener('click', function () {
+        var selectedValue = document.getElementById('TipoPuesto').value;
+        document.getElementById('TipoPuesto_oculto').value = selectedValue;
+        document.getElementById('FormFiltro_TipoPuesto').submit();
+    });
+
+
+</script>

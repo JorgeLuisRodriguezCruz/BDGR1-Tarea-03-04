@@ -6,6 +6,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Xml.Linq;
@@ -325,6 +326,53 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
             }
             return RedirectToAction(nameof(ListaEmpleado));
         }
+
+        [HttpPost]
+        public ActionResult ListaEmpleado(string LBNombre_, string LBCantidad_, string TipoDocId_, string TipoDepartamento_, string TipoPuesto_)
+        {
+            IEnumerable<EntidadEmpleado> empleados = new List<EntidadEmpleado>();
+            try
+            {
+                if (LBNombre_ != null && LBNombre_ != "")
+                {
+                    empleados = _context.Empleados.FromSqlInterpolated($"EXEC EmpleadosPorNombre {LBNombre_}");
+                }
+                if (LBCantidad_ != null && LBCantidad_ != "")
+                {
+                    empleados = _context.Empleados.FromSqlInterpolated($"EXEC EmpleadosPorCantidad {LBCantidad_}");
+                }
+                if (TipoDocId_ != null && TipoDocId_ != "")
+                {
+                    empleados = _context.Empleados.FromSqlInterpolated($"EXEC EmpleadosPorTipoDocIdentidad {TipoDocId_}");
+                }
+                if (TipoDepartamento_ != null && TipoDepartamento_ != "")
+                {
+                    empleados = _context.Empleados.FromSqlInterpolated($"EXEC EmpleadosPorTipoDepartamento {TipoDepartamento_}");
+                }
+                if (TipoPuesto_ != null && TipoPuesto_ != "")
+                {
+                    empleados = _context.Empleados.FromSqlInterpolated($"EXEC EmpleadosPorTipoPuesto {TipoPuesto_}");
+                }
+            } catch (Exception ex)  { 
+                Console.WriteLine("ERROR --> " + ex.Message); 
+                empleados = new List<EntidadEmpleado>();
+            } 
+
+            IEnumerable<EntidadTipoDocIdentidad> tiposDocsIdentidad = _context.TiposDocsIdentidad.FromSqlInterpolated($"EXEC ObtenerTiposDocsIdentidad");
+            IEnumerable<EntidadDepartamento> tiposDepartamentos = _context.Departamentos.FromSqlInterpolated($"EXEC ObtenerDepartamentos");
+            IEnumerable<EntidadPuesto> tiposPuestos = _context.Puestos.FromSqlInterpolated($"EXEC ObtenerPuestos");
+             
+            List<SelectListItem> tiposDocsId = listaTiposDocIdentidad(tiposDocsIdentidad);
+            List<SelectListItem> tiposDeparta = listaTiposDepartamento(tiposDepartamentos);
+            List<SelectListItem> tiposPuesto = listaTiposPuesto(tiposPuestos);
+
+            ViewBag.OpcionesTipoDocID = tiposDocsId;
+            ViewBag.OpcionesTipoDepart = tiposDeparta;
+            ViewBag.OpcionesTipoPuesto = tiposPuesto;
+             
+            return View(pasarElementosAVista(empleados, tiposDocsId, tiposDeparta, tiposPuesto));
+        }
+
 
     }
 }
