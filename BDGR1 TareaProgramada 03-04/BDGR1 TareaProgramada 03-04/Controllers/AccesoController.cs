@@ -44,9 +44,9 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
                         return RedirectToAction("ListaEmpleado", "MunuAdmin");
 
                     case 2: //Menu Empleado
-                        return View();
+                        return RedirectToAction("ListaEmpleado", "MunuAdmin");
                 }
-                
+
             }
 
             ViewBag.Mensaje = "Error: El suario no ha sido encontrado.";

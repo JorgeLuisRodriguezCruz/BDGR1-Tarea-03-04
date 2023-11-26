@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BDGR1_TareaProgramada_03_04.Models.EntidadPlanillaSemana>
+
+@{
+    ViewData["Title"] = "PlanillasSemanas"; 
+}
+
+<div>
+    <h1 style="margin-left: 5%; margin-top: 5%; font-size: 190%;">Planilla semana</h1>
+</div>
+<div style="margin-left: 5%; margin-top: 2%;">
+    <a asp-action="VolverMenuConsulta"><input style="margin-top: 2%; width: 150px;" class="btn btn-primary" value="Volver"> </a>
+</div>
+
+<table class="table" style="margin-top: 5%;">
+    <thead>
+        <tr>
+
+            <th>
+                Salario bruto
+            </th> 
+            <th>
+                Salario neto
+            </th>
+            <th>
+                Numero deducciones
+            </th>
+            <th>
+                Horas ordinarias
+            </th>
+            <th>
+                Horas extras
+            </th>
+            <th>
+                Horas extras dobles
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr> 
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalarioBruto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalarioNeto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroDeducciones)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HorasExtras)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HorasExtrasDobles)
+                </td>
+            </tr> 
+        } 
+        
+    </tbody>
+
+</table>
