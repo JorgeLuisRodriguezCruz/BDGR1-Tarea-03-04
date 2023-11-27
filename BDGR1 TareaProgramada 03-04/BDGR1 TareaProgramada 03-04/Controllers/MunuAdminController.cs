@@ -182,6 +182,13 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
             return NotFound(); 
         }
 
+        public IActionResult Impersonar()
+        {
+            string? vuelve = TempData["Volver"] as string;
+            TempData["Volver"] = vuelve;
+            return RedirectToAction("ElegirConsulta", "MenuEmpleado");
+        }
+
         public IActionResult SeleccionarEmpleado()
         {
             return View();
@@ -232,8 +239,9 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
                             return RedirectToAction(nameof(Eliminar));
                         }
                         if (nuevaDir.ToUpper().Contains("IMPERSONAR EMPLEADO") == true)
-                        { 
-                            return RedirectToAction(nameof(Eliminar));
+                        {
+                            TempData["Volver"] = "Admin";
+                            return RedirectToAction(nameof(Impersonar));
                         }
                     }
 
