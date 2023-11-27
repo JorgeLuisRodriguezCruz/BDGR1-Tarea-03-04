@@ -44,7 +44,7 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
                         return RedirectToAction("ListaEmpleado", "MunuAdmin");
 
                     case 2: //Menu Empleado
-                        return RedirectToAction("ListaEmpleado", "MunuAdmin");
+                        return RedirectToAction("ElegirConsulta", "MenuEmpleado");
                 }
 
             }

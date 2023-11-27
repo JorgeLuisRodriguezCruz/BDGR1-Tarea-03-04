@@ -30,9 +30,9 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
                 contenidoOperaciones = System.IO.File.ReadAllText(dirUrlOperaciones); 
                 
                 //Se cargan catalogos
-                    //_context.Database.ExecuteSqlRaw("CargarCatalogos @xmlData", new SqlParameter("@xmlData", contenidoCatalogos));
+                    _context.Database.ExecuteSqlRaw("CargarCatalogos @xmlData", new SqlParameter("@xmlData", contenidoCatalogos));
                 //Se cargan operaciones 
-                    //_context.Database.ExecuteSqlRaw("CargarOperaciones @xmlData", new SqlParameter("@xmlData", contenidoOperaciones));
+                    _context.Database.ExecuteSqlRaw("CargarOperaciones @xmlData", new SqlParameter("@xmlData", contenidoOperaciones));
                 
                 
                 /*

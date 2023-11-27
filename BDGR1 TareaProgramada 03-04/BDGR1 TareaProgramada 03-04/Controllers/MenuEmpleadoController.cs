@@ -1,6 +1,7 @@
 ﻿using BDGR1_TareaProgramada_03_04.Data;
 using BDGR1_TareaProgramada_03_04.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BDGR1_TareaProgramada_03_04.Controllers
 {
@@ -20,12 +21,14 @@ namespace BDGR1_TareaProgramada_03_04.Controllers
 
         public IActionResult ConsultaPlanillaSemana()
         {
-            return View();
+            IEnumerable<EntidadPlanillaSemana> planillaSemana = new List<EntidadPlanillaSemana>();
+            return View( planillaSemana );
         }
         
         public IActionResult ConsultaPlanillaMes()
         {
-            return View();
+            IEnumerable<EntidadPlanillaMes> planillaMes = new List<EntidadPlanillaMes>();
+            return View(planillaMes); 
         }
 
         public IActionResult Cerrar()

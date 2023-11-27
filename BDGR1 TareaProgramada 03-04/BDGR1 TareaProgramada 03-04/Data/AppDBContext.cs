@@ -10,6 +10,7 @@ namespace BDGR1_TareaProgramada_03_04.Data
         }
 
         public DbSet<EntidadUsuario> Usuarios { get; set; }
+        
         public DbSet<EntidadEmpleado> Empleados { get; set; }
 
         public DbSet<EntidadDepartamento> Departamentos { get; set; }
@@ -17,6 +18,10 @@ namespace BDGR1_TareaProgramada_03_04.Data
         public DbSet<EntidadPuesto> Puestos { get; set; }
 
         public DbSet<EntidadTipoDocIdentidad> TiposDocsIdentidad { get; set; }
+
+        public DbSet<EntidadPlanillaSemana> PlanillaSemanas { get; set; }
+
+        public DbSet<EntidadPlanillaMes> PlanillaMes { get; set; }
 
     }
 }
